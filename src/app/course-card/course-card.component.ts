@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {Course} from '../model/course';
 import {CourseImageComponent} from '../course-image/course-image.component';
+import {CoursesService} from '../services/courses.service';
 
 @Component({
     selector: 'course-card',
@@ -31,7 +32,7 @@ export class CourseCardComponent implements OnInit {
     courseEmitter = new EventEmitter<Course>();
 
 
-    constructor() {
+    constructor(private coursesService: CoursesService) {
 
     }
 
@@ -40,7 +41,7 @@ export class CourseCardComponent implements OnInit {
     }
 
 
-    onSaveClicked(description:string) {
+    onSaveClicked(description: string) {
 
         this.courseEmitter.emit({...this.course, description});
 
